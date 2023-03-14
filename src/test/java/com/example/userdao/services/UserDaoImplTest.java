@@ -28,7 +28,7 @@ class UserDaoImplTest {
 
     @Test
     public void getUserNullName() {
-           Assert.assertNull (USER_1);
+           Assert.assertEquals (null, USER_1);
     }
 
 

@@ -21,14 +21,13 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public String getUserByName(String name) {
-        if (name!=null && !name.isEmpty() && !name.isBlank()) {
-            Stream<User> stream = nameList.stream();
-                    stream.filter(user1 -> user.getName().equals(name)).collect(Collectors.toSet());
-            return nameList.toString();
-        } else {
-
+        if (!nameList.contains(name)) {
             return null;
+        } else if (name != null && !name.isEmpty() && !name.isBlank()) {
+            Stream<User> stream = nameList.stream();
+            stream.filter(user1 -> user.getName().equals(name)).collect(Collectors.toSet());
         }
+        return user.getName();
     }
 
     @Override
