@@ -49,4 +49,11 @@ public class UserServiceImpl implements UserService {
     public int hashCode() {
         return Objects.hash(nameRepository, nameList);
     }
+
+    @Override
+    public String toString() {
+        return "UserServiceImpl{" +
+                "nameList=" + nameList +
+                '}';
+    }
 }

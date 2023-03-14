@@ -4,13 +4,15 @@ import com.example.userdao.model.User;
 import com.example.userdao.repositories.UserDao;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class UserDaoImpl implements UserDao {
-
-    private Set<User> nameList;
+    private User user;
+    private Set<User> nameList = new HashSet<>();
 
     public UserDaoImpl(Set<User> nameList) {
-        this.nameList = new HashSet<>(Set.of
+        this.nameList = (Set.of
                 (new User("Ivan"),
                         new User("Oleg"),
                         new User("Pavel"),
@@ -19,10 +21,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public String getUserByName(String name) {
-        if (!nameList.contains(name)) {
+        if (name!=null && !name.isEmpty() && !name.isBlank()) {
+            Stream<User> stream = nameList.stream();
+                    stream.filter(user1 -> user.getName().equals(name)).collect(Collectors.toSet());
+            return nameList.toString();
+        } else {
+
             return null;
         }
-        return name;
     }
 
     @Override

@@ -12,20 +12,23 @@ class UserDaoImplTest {
 
     private static User user;
     private final String USER_NAME = "Ivan";
+    private final String USER_1 = "Maria";
 
-    @Before
-    private static void createNewUser() {
-        user = new User("Maria");
+    @BeforeEach
+    private void createNewUser() {
+        user = new User("Olga");
     }
 
     @Test
     public void getUserByName() {
         Assert.assertNotNull(USER_NAME);
+        Assert.assertEquals("Ivan", USER_NAME);
+
     }
 
     @Test
     public void getUserNullName() {
-        Assert.assertNull(user);
+           Assert.assertNull (USER_1);
     }
 
 
