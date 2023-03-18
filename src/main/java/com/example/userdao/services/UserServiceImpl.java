@@ -9,14 +9,14 @@ import java.util.*;
 public class UserServiceImpl implements UserService {
 
     private final UserDaoImpl nameRepository;
-    private Set<User> nameList = new HashSet<>();
+    private List<User> nameList = new ArrayList<>();
 
     public UserServiceImpl(UserDaoImpl nameRepository) {
         this.nameRepository = nameRepository;
     }
 
     @Override
-    public String getUserByName(String name) {
+    public User getUserByName(String name) {
         return nameRepository.getUserByName(name);
     }
 
@@ -30,11 +30,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String checkUserExist(String name) {
+    public boolean checkUserExist(String name) {
         if (nameRepository.getUserByName(name) == null) {
             throw new UserNotExistException();
         }
-        return name;
+        return true;
     }
 
     @Override

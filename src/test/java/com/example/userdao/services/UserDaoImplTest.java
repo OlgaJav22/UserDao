@@ -6,30 +6,37 @@ import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoImplTest {
 
-    private static User user;
+
     private final String USER_NAME = "Ivan";
     private final String USER_1 = "Maria";
+    private final User user = new User(USER_NAME);
 
+    UserDaoImpl userDao;
     @BeforeEach
     private void createNewUser() {
-        user = new User("Olga");
+        userDao = new UserDaoImpl();
     }
 
     @Test
     public void getUserByName() {
-        Assert.assertNotNull(USER_NAME);
-        Assert.assertEquals("Ivan", USER_NAME);
+      Assert.assertEquals(user, userDao.getUserByName(USER_NAME));
 
     }
 
     @Test
     public void getUserNullName() {
-           Assert.assertEquals (null, USER_1);
+        Assert.assertNull(null, userDao.getUserByName(USER_1));}
+
+
     }
 
 
-}

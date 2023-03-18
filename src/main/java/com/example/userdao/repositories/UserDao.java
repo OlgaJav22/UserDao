@@ -7,7 +7,7 @@ import java.util.Collection;
 public interface UserDao {
 
 
-    String getUserByName(String name);
+    User getUserByName(String name);
 
     Collection<User> findAllUsers();
 }

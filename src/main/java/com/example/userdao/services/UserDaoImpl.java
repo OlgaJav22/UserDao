@@ -8,26 +8,24 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class UserDaoImpl implements UserDao {
-    private User user;
-    private Set<User> nameList = new HashSet<>();
+    private User user1;
+    private List<User> nameList = new ArrayList<>();
 
-    public UserDaoImpl(Set<User> nameList) {
-        this.nameList = (Set.of
-                (new User("Ivan"),
-                        new User("Oleg"),
-                        new User("Pavel"),
-                        new User("Roman")));
+    public UserDaoImpl() {
+        this.nameList = (Arrays.asList(
+                new User("Ivan"),
+                new User("Oleg"),
+                new User("Pavel"),
+                new User("Roman")));
     }
 
     @Override
-    public String getUserByName(String name) {
-        if (!nameList.contains(name)) {
-            return null;
-        } else if (name != null && !name.isEmpty() && !name.isBlank()) {
-            Stream<User> stream = nameList.stream();
-            stream.filter(user1 -> user.getName().equals(name)).collect(Collectors.toSet());
+    public User getUserByName(String name) {
+        user1 = new User(name);
+        if (nameList.contains(user1)) {
+            return user1;
         }
-        return user.getName();
+        return null;
     }
 
     @Override

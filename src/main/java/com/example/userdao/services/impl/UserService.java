@@ -6,9 +6,9 @@ import java.util.Collection;
 
 public interface UserService {
 
-   String getUserByName(String name);
+   User getUserByName(String name);
 
     Collection<User> findAllUsers();
 
-    String checkUserExist(String name);
+    boolean checkUserExist(String name);
 }
